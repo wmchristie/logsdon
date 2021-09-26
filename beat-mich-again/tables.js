@@ -1,9 +1,8 @@
 var tables = [
   {
-    id: 'table_1',
+    id: '58ZYFFK3TYJQ2',
     number: '1',
-    description: 'High top',
-    seat_count: 6,
+    description: 'High top 6 seats',
     price: '$180',
     is_available: true,
   },
