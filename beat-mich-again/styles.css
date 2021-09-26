@@ -1,17 +1,11 @@
-@media screen and (min-width: 1024px) {
+@media only screen and (min-width: 1024px) {
   .content {
     max-width: 1024px;
   }
-  .header {
-    height: 535px;
-  }
 }
-@media screen and (max-width: 428px) {
+@media only screen and (max-width: 428px) {
   .content {
     max-width: 428px;
-  }
-  .header {
-    height: 224px;
   }
 }
 body {
@@ -25,8 +19,23 @@ body {
 }
 
 .header {
-  background-image: url("banner.jpg");
-  background-size: contain;
   width: 100%;
-  background-color: #ccc
+  display: flex;
+}
+.header .banner {
+  flex: 0 1 auto;
+  width: 100%;
+}
+
+.seating-charts {
+  width: 100%;
+  display: flex;
+}
+
+.seating-charts .chart {
+  flex: 0 0 50%;
+}
+
+.seating-charts .chart .map {
+  width: 100%
 }

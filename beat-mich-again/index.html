@@ -17,14 +17,45 @@
   <div class="content">
 
     <div class="header">
+      <img class="banner" src="banner.jpg" />
+    </div>
+
+    <div class="body">
+      <h1 class="title">Beat Mich-Again Tailgate</h1>
+
+      <h3 class="instructions">Purchase your reserved table now</div>
+
+      <div id="purchase_items" class="purchase-items">
+      </div>
+
+      <div class="seating-charts">
+        <div class="chart">
+          <img class="map" src="indoor_layout.jpg" />
+        </div>
+        <div class="chart">
+          <img class="map" src="patio_layout.jpg" />
+        </div>
+      </div>
 
     </div>
 
-    <img src="indoor_layout.jpg" />
-    <img src="patio_layout.jpg" />
-
   </div>
-  <script src="js/scripts.js"></script>
+
+  <div id="order_form" class="order-form">
+    <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+      <input type="hidden" name="cmd" value="_s-xclick">
+      <input type="hidden" name="hosted_button_id" value="NPUUWVWBKPLX4">
+      <input type="image"
+        src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_SM.gif"
+        border="0"
+        name="submit"
+        alt="PayPal - The safer, easier way to pay online!">
+      <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+    </form>
+  </div>
+
+  <script src="scripts.js"></script>
+  <script src="tables.js"></script>
 
 </body>
 </html>
