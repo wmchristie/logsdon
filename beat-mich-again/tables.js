@@ -1,16 +1,78 @@
 var tables = [
   {
     id: '58ZYFFK3TYJQ2',
-    number: '1',
+    name: 'Table 1',
     description: 'High top 6 seats',
     price: '$180',
     is_available: true,
   },
   {
     id: 'table_5',
-    number: '2',
-    description: 'High top',
-    seat_count: 8,
+    name: 'Table 2',
+    description: 'High top 6 seats',
+    price: '$240',
+    is_available: false,
+  },
+  {
+    id: 'table_5',
+    name: 'Table 2',
+    description: 'High top 6 seats',
+    price: '$240',
+    is_available: false,
+  },
+  {
+    id: 'table_5',
+    name: 'Table 2',
+    description: 'High top 6 seats',
+    price: '$240',
+    is_available: false,
+  },
+  {
+    id: 'table_5',
+    name: 'Table 2',
+    description: 'High top 6 seats',
+    price: '$240',
+    is_available: false,
+  },
+  {
+    id: 'table_5',
+    name: 'Table 2',
+    description: 'High top 6 seats',
+    price: '$240',
+    is_available: false,
+  },
+  {
+    id: 'table_5',
+    name: 'Table 2',
+    description: 'High top 6 seats',
+    price: '$240',
+    is_available: false,
+  },
+  {
+    id: 'table_5',
+    name: 'Table 2',
+    description: 'High top 6 seats',
+    price: '$240',
+    is_available: false,
+  },
+  {
+    id: 'table_5',
+    name: 'Table 2',
+    description: 'High top 6 seats',
+    price: '$240',
+    is_available: false,
+  },
+  {
+    id: 'table_5',
+    name: 'Table 2',
+    description: 'High top 6 seats',
+    price: '$240',
+    is_available: false,
+  },
+  {
+    id: 'table_5',
+    name: 'Table 2',
+    description: 'High top 6 seats',
     price: '$240',
     is_available: false,
   }
@@ -19,8 +81,9 @@ var tables = [
 function toItemMarkup(source) {
   return `
     <div class="item">
-      <span class="description">Table #${source.number} ${source.description} (${source.seat_count})</span>
-      <span class="price">${source.price}<span>
+      <span class="name">${source.name}</span>
+      <span class="price">${source.price}</span>
+      <span class="description">${source.description}</span>
       <button class="btn-purchase" data-purpose="purchase" data-id="${source.id}">Purchase</button>
     </div>
   `;

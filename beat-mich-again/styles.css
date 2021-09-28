@@ -11,6 +11,13 @@
 body {
   padding: 0;
   margin: 0;
+  font-family: verdana, arial;
+  background: #000;
+  color: #ebebeb;
+}
+
+a {
+  color: #ff0;
 }
 
 .content {
@@ -27,6 +34,52 @@ body {
   width: 100%;
 }
 
+.body {
+  padding: 0 1rem;
+}
+
+.layout-links {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: solid 1px #ff0;
+  padding-bottom: 1rem;
+}
+
+.layout-links h4 {
+  width: 100%;
+  margin: 0.4rem;
+  text-align: center;
+}
+
+.layout-links a {
+  flex: 0 0 33%;
+  text-align: center;
+}
+
+.purchase-items {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.purchase-items .item {
+  padding: 1rem;
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+.item .name {
+  color: #ff0;
+  font-weight: bold;
+}
+
+.item .price {
+}
+
+.item .description {
+  display: block;
+}
+
 .seating-charts {
   width: 100%;
   display: flex;
@@ -38,4 +91,11 @@ body {
 
 .seating-charts .chart .map {
   width: 100%
+}
+
+.order-form {
+  display: none;
+}
+.order-form.active {
+  display: absolute;
 }
