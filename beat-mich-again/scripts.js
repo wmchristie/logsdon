@@ -51,10 +51,6 @@
 
   function writeSold() {
 
-    var canvas = document.getElementById('patio_overlay');
-    var ctx = canvas.getContext('2d');
-    ctx.textBaseline = 'middle';
-
     var positions = app.tables.filter(table => {
       return true;
       //return !app.tableStatus[table.id].available;
@@ -67,8 +63,6 @@
         color = '#000';
       }
 
-      console.log(table.id, table.type, color);
-
       var position = app.layouts[table.id];
 
       return {
@@ -76,33 +70,20 @@
         y: position.y,
         vertical: position.vertical,
         color: color,
+        mapId: table.map_id,
       };
 
     });
-/*
-    var positions = [
-      {
-        id: 'table_1',
-        x: 20,
-        y: 20,
-        vertical: 1,
-        color: '#ff0',
-      },
-      {
-        id: 'table_5',
-        x: 20,
-        y: 26,
-        vertical: 0,
-        color: '#000',
-      },
-    ];
-*/
+
     positions.forEach(position => {
+
+      console.log(position.mapId);
+
+      var canvas = document.getElementById(position.mapId);
+
 
       var x = 0;
       var y = 0;
-
-      console.log('position', position);
 
       if (position.vertical === 1) {
         y = (position.x / 100) * canvas.width;
@@ -113,6 +94,9 @@
       }
 
       var fontSize = canvas.height / 33;
+
+      var ctx = canvas.getContext('2d');
+      ctx.textBaseline = 'middle';
 
       ctx.save();
       ctx.font = `bold ${fontSize}px arial`;
