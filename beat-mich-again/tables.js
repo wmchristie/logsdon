@@ -1,191 +1,49 @@
 (function () {
-  var app = window.app || (window.app = {});
 
   var tables = [
-    {
-      id: '58ZYFFK3TYJQ2',
-      name: 'Table 1',
-      description: 'High top 6 seats',
-      price: '$180',
-      is_available: true,
-    },
-    {
-      id: 'table_5',
-      name: 'Table 2',
-      description: 'High top 6 seats',
-      price: '$240',
-      is_available: false,
-    },
-    {
-      id: 'table_5',
-      name: 'Table 2',
-      description: 'High top 6 seats',
-      price: '$240',
-      is_available: false,
-    },
-    {
-      id: 'table_5',
-      name: 'Table 2',
-      description: 'High top 6 seats',
-      price: '$240',
-      is_available: false,
-    },
-    {
-      id: 'table_5',
-      name: 'Table 2',
-      description: 'High top 6 seats',
-      price: '$240',
-      is_available: false,
-    },
-    {
-      id: 'table_5',
-      name: 'Table 2',
-      description: 'High top 6 seats',
-      price: '$240',
-      is_available: false,
-    },
-    {
-      id: 'table_5',
-      name: 'Table 2',
-      description: 'High top 6 seats',
-      price: '$240',
-      is_available: false,
-    },
-    {
-      id: 'table_5',
-      name: 'Table 2',
-      description: 'High top 6 seats',
-      price: '$240',
-      is_available: false,
-    },
-    {
-      id: 'table_5',
-      name: 'Table 2',
-      description: 'High top 6 seats',
-      price: '$240',
-      is_available: false,
-    },
-    {
-      id: 'table_5',
-      name: 'Table 2',
-      description: 'High top 6 seats',
-      price: '$240',
-      is_available: false,
-    },
-    {
-      id: 'table_5',
-      name: 'Table 2',
-      description: 'High top 6 seats',
-      price: '$240',
-      is_available: false,
-    }
+    { id: 'table_1', paypal_id: '58ZYFFK3TYJQ2', name: 'Table 1', description: 'Low top 8 seats', type: 'low', price: '$180', },
+    { id: 'table_2', paypal_id: '58ZYFFK3TYJQ2', name: 'Table 2', description: 'Low top 8 seats', type: 'low', price: '$180', },
+    { id: 'table_3', paypal_id: '58ZYFFK3TYJQ2', name: 'Table 3', description: 'Low top 8 seats', type: 'low', price: '$180', },
+    { id: 'table_4', paypal_id: '58ZYFFK3TYJQ2', name: 'Table 4', description: 'Low top 8 seats', type: 'low', price: '$180', },
+    { id: 'table_5', paypal_id: '58ZYFFK3TYJQ2', name: 'Table 5', description: 'High top 2 seats', type: 'high', price: '$180', },
+    { id: 'table_6', paypal_id: '58ZYFFK3TYJQ2', name: 'Table 6', description: 'Low top 6 seats', type: 'low', price: '$180', },
+    { id: 'table_7', paypal_id: '58ZYFFK3TYJQ2', name: 'Table 7', description: 'High top 6 seats', type: 'high', price: '$180', },
+    { id: 'table_8', paypal_id: '58ZYFFK3TYJQ2', name: 'Table 8', description: 'High top 6 seats', type: 'high', price: '$180', },
+    { id: 'table_9', paypal_id: '58ZYFFK3TYJQ2', name: 'Table 9', description: 'Low top 4 seats', type: 'low', price: '$180', },
+    { id: 'table_10', paypal_id: '58ZYFFK3TYJQ2', name: 'Table 10', description: 'High top 6 seats', type: 'high', price: '$180', },
+
+    { id: 'table_11', paypal_id: '58ZYFFK3TYJQ2', name: 'Table 11', description: 'High top 6 seats', type: 'high', price: '$180', },
+    { id: 'table_12', paypal_id: '58ZYFFK3TYJQ2', name: 'Table 12', description: 'Low top 4 seats', type: 'low', price: '$180', },
+    { id: 'table_13', paypal_id: '58ZYFFK3TYJQ2', name: 'Table 13', description: 'High top 4 seats', type: 'high', price: '$180', },
+    { id: 'table_14', paypal_id: '58ZYFFK3TYJQ2', name: 'Table 14', description: 'High top 4 seats', type: 'high', price: '$180', },
+    { id: 'table_15', paypal_id: '58ZYFFK3TYJQ2', name: 'Table 15', description: 'Low top 6 seats', type: 'low', price: '$180', },
+    { id: 'table_16', paypal_id: '58ZYFFK3TYJQ2', name: 'Table 16', description: 'High top 2 seats', type: 'high', price: '$180', },
+    { id: 'table_17', paypal_id: '58ZYFFK3TYJQ2', name: 'Table 17', description: 'High top 6 seats', type: 'high', price: '$180', },
+    { id: 'table_18', paypal_id: '58ZYFFK3TYJQ2', name: 'Table 18', description: 'Low top 4 seats', type: 'low', price: '$180', },
+    { id: 'table_19', paypal_id: '58ZYFFK3TYJQ2', name: 'Table 19', description: 'High top 4 seats', type: 'high', price: '$180', },
+    { id: 'table_20', paypal_id: '58ZYFFK3TYJQ2', name: 'Table 20', description: 'High top 6 seats', type: 'high', price: '$180', },
+
+    { id: 'table_21', paypal_id: '58ZYFFK3TYJQ2', name: 'Table 21', description: 'Low top 4 seats', type: 'low', price: '$180', },
+    { id: 'table_22', paypal_id: '58ZYFFK3TYJQ2', name: 'Table 22', description: 'High top 4 seats', type: 'high', price: '$180', },
+    { id: 'table_23', paypal_id: '58ZYFFK3TYJQ2', name: 'Table 23', description: 'High top 2 seats', type: 'high', price: '$180', },
+    { id: 'table_24', paypal_id: '58ZYFFK3TYJQ2', name: 'Table 24', description: 'High top 2 seats', type: 'high', price: '$180', },
+    { id: 'table_25', paypal_id: '58ZYFFK3TYJQ2', name: 'Table 25', description: 'Low top 4 seats', type: 'low', price: '$180', },
+    { id: 'table_26', paypal_id: '58ZYFFK3TYJQ2', name: 'Table 26', description: 'High top 6 seats', type: 'high', price: '$180', },
+    { id: 'table_27', paypal_id: '58ZYFFK3TYJQ2', name: 'Table 27', description: 'High top 6 seats', type: 'high', price: '$180', },
+    { id: 'table_28', paypal_id: '58ZYFFK3TYJQ2', name: 'Table 28', description: 'High top 6 seats', type: 'high', price: '$180', },
+    { id: 'table_29', paypal_id: '58ZYFFK3TYJQ2', name: 'Table 29', description: 'High top 6 seats', type: 'high', price: '$180', },
+    { id: 'table_30', paypal_id: '58ZYFFK3TYJQ2', name: 'Table 30', description: 'High top 6 seats', type: 'high', price: '$180', },
+
+    { id: 'lane_31', paypal_id: '58ZYFFK3TYJQ2', name: 'Lane 31', description: 'Bowling lane 4 seats', type: 'lane', price: '$180', },
+    { id: 'lane_32', paypal_id: '58ZYFFK3TYJQ2', name: 'Lane 32', description: 'Bowling lane 4 seats', type: 'lane', price: '$180', },
+    { id: 'lane_33', paypal_id: '58ZYFFK3TYJQ2', name: 'Lane 33', description: 'Bowling lane 4 seats', type: 'lane', price: '$180', },
+    { id: 'lane_34', paypal_id: '58ZYFFK3TYJQ2', name: 'Lane 34', description: 'Bowling lane 4 seats', type: 'lane', price: '$180', },
+    { id: 'lane_35', paypal_id: '58ZYFFK3TYJQ2', name: 'Lane 35', description: 'Bowling lane 4 seats', type: 'lane', price: '$180', },
+    { id: 'lane_36', paypal_id: '58ZYFFK3TYJQ2', name: 'Lane 36', description: 'Bowling lane 4 seats', type: 'lane', price: '$180', },
+    { id: 'lane_37', paypal_id: '58ZYFFK3TYJQ2', name: 'Lane 37', description: 'Bowling lane 4 seats', type: 'lane', price: '$180', },
+    { id: 'lane_38', paypal_id: '58ZYFFK3TYJQ2', name: 'Lane 38', description: 'Bowling lane 4 seats', type: 'lane', price: '$180', },
   ];
 
-  function toItemMarkup(source) {
-    return `
-      <div class="item">
-        <span class="name">${source.name}</span>
-        <span class="price">${source.price}</span>
-        <span class="description">${source.description}</span>
-        <button class="btn-purchase" data-purpose="purchase" data-id="${source.id}">Purchase</button>
-      </div>
-    `;
-  }
+  (window.app || (window.app = {})).tables = tables;
 
-  function setOverlaySizes() {
-    ['patio_layout', 'dining_layout', 'lane_layout' ].forEach(layoutId => {
-      var image = document.querySelector(`#${layoutId} img`);
-      var canvas = document.querySelector(`#${layoutId} canvas`);
-      canvas.width = image.width;
-      canvas.height = image.height;
-    });
-  }
-
-  function showLayoutGrid(id) {
-
-    var container = document.createElement('div');
-    container.className = 'layout-grid';
-
-    [...Array(100).keys()].map(i => {
-      var cell = document.createElement('div');
-      cell.className = `cell cell-${i}`;
-      return cell;
-    }).forEach(cell => {
-      container.append(cell);
-    });
-
-    var map = document.querySelector(`#${id} .map`);
-    map.append(container);
-  }
-
-  function writeSold() {
-
-    var canvas = document.getElementById('patio_overlay');
-    var ctx = canvas.getContext('2d');
-    ctx.textBaseline = 'middle';
-
-    var positions = [
-      {
-        id: 'table_1',
-        x: 20,
-        y: 20,
-        vertical: 1,
-        color: '#ff0',
-      },
-      {
-        id: 'table_5',
-        x: 20,
-        y: 26,
-        vertical: 0,
-        color: '#000',
-      },
-    ];
-
-    positions.forEach(position => {
-
-      var x = 0;
-      var y = 0;
-
-      if (position.vertical === 1) {
-        y = (position.x / 100) * canvas.width;
-        x = (position.y / 100) * canvas.height * -1;
-      } else {
-        x = (position.x / 100) * canvas.width;
-        y = (position.y / 100) * canvas.height;
-      }
-
-      var fontSize = canvas.height / 33;
-
-      ctx.save();
-      ctx.font = `bold ${fontSize}px arial`;
-      ctx.rotate(position.vertical * (-Math.PI/2));
-      ctx.fillStyle = position.color;
-      ctx.fillText('SOLD', x, y);
-      ctx.restore();
-
-    });
-
-  }
-
-  window.onload = function () {
-    var container = document.getElementById('purchase_items');
-    var markup = tables.map(toItemMarkup).join('');
-    container.innerHTML = markup;
-
-    container.addEventListener('click', function (e) {
-      if (!e.target) return;
-      if (e.target.dataset.purpose !== 'purchase') return;
-
-      console.log('purchase clicked', e.target.dataset.id);
-
-    });
-
-    setOverlaySizes();
-
-    showLayoutGrid('patio_layout');
-    showLayoutGrid('dining_layout');
-    showLayoutGrid('lane_layout');
-
-    writeSold();
-  }
 }());

@@ -10,7 +10,7 @@
     table_7: { available: true, },
     table_8: { available: true, },
     table_9: { available: true, },
-    table_0: { available: true, },
+    table_10: { available: true, },
 
     table_11: { available: true, },
     table_12: { available: true, },
