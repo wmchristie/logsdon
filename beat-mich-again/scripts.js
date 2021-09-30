@@ -143,6 +143,16 @@
     //showLayoutGrid('lane_layout');
 
     writeSold();
+
+    var orderForm = document.getElementById('order_form');
+
+    orderForm.addEventListener('click', (e) => {
+      console.log('clicking');
+      if (!e.target) return;
+      if (e.target.dataset.purpose !== 'cancel') return;
+      orderForm.className = orderForm.dataset.baseClass;
+      return false;
+    });
   }
 
   function getPatioDiningLayoutImage() {

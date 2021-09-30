@@ -52,7 +52,7 @@ a {
 }
 
 .layout-links a {
-  flex: 0 0 33%;
+  flex: 0 0 50%;
   text-align: center;
 }
 
@@ -64,7 +64,7 @@ a {
 
 .purchase-items .item {
   padding: 1rem;
-  flex: 0 0 auto;
+  flex: 1 0 auto;
   text-align: center;
 }
 
@@ -110,16 +110,86 @@ a {
 
 .order-form {
   display: none;
-  background-color: #f0f;
-}
+  background-color: #555;
 
-.order-form.active {
-  display: block;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+.order-form .content {
+  font-size: 1.5rem;
+  background-color: #ff0;
+  border-radius: 1rem;
+  border: solid 2px #000;
+  box-shadow: 0.25rem 0.12rem 0.12rem #000;
+  color: #000;
+
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+}
+
+.order-form .product {
+  padding: 1rem 1rem 0 1rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.order-form .product .name {
+  margin: 0;
+  flex: 1 0 50%;
+}
+
+.order-form .product .price {
+  margin: 0;
+  flex: 1 0 50%;
+  text-align: right;
+}
+
+.order-form .product .descripion {
+  flex: 1 0 100%;
+  margin: 0;
+}
+
+.order-form .title {
+  margin: 0;
+  padding: 1rem;
+  background-color: #000;
+  color: #ebebeb;
+}
+
+.order-form .divider {
+  color: #000;
+  margin: 0;
+  border: solid 1px #555;
+}
+
+.order-form form {
+  padding: 0.5rem 1rem 1rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 1 100%;
+}
+
+.order-form form .form-item {
+  flex: 1 1 100%;
+  margin: 0.5rem 0;
+}
+
+.order-form form .btn {
+  flex: 0 0 auto;
+}
+
+.order-form form .btn-submit {
+  margin-left: auto;
+}
+
+.order-form.active {
+  display: block;
 }
 
 .layout-grid {

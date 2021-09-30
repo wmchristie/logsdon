@@ -23,13 +23,11 @@
 
     <div class="body">
       <h3 class="instructions">Purchase your reserved table now</h3>
-      <div class="layout-links">
+      <!--div class="layout-links">
         <h4>Layouts</h4>
         <a href="#patio_dining_layout">Patio & Dining room</a>
         <a href="#lane_layout">Lanes</a>
-      </div>
-
-      <div id="purchase_items" class="purchase-items"></div>
+      </div-->
 
       <div class="seating-charts">
         <div id="patio_dining_layout" class="chart">
@@ -48,31 +46,40 @@
         </div>
       </div>
 
+      <div id="purchase_items" class="purchase-items"></div>
+
     </div>
 
   </div>
 
   <div id="order_form" class="order-form" data-base-class="order-form">
-    <h3 class="popup-title">Purchase</h3>
-    <div id="order_form_description" class="order-form-description">
-      The description of the item will go here.
+    <div class="content">
+      <h2 class="title">Purchase</h2>
+      <div class="product">
+        <h3 class="name">Table 1</h3>
+        <h3 class="price">$180</h3>
+        <p class="description">Low top 6 seats</p>
+      </div>
+      <hr class="divider" />
+      <form action=https://www.paypal.com/cgi-bin/webscr method="post" target="_top">
+        <input type="hidden" name="cmd" value="_s-xclick">
+        <input type="hidden" name="hosted_button_id" value="58ZYFFK3TYJQ2">
+        <input type="hidden" name="on0" value="Email address">
+        <label class="form-item lbl">Email address</label>
+        <input class="form-item" type="text" name="os0" maxlength="200">
+        <input type="hidden" name="on1" value="Phone">
+        <label class="form-item lbl">Phone</label>
+        <input class="form-item" type="text" name="os1" maxlength="200">
+        <button type="button" class="form-item btn btn-cancel" data-purpose="cancel">Cancel</button>
+        <input
+          class="form-item btn btn-submit"
+          type="image"
+          src=https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif border="0"
+          name="submit"
+          alt="PayPal - The safer, easier way to pay online!">
+        <img alt="" border="0" src=https://www.paypalobjects.com/en_US/i/scr/pixel.gif width="1" height="1">
+      </form>
     </div>
-    <form action=https://www.paypal.com/cgi-bin/webscr method="post" target="_top">
-    <input type="hidden" name="cmd" value="_s-xclick">
-    <input type="hidden" name="hosted_button_id" value="58ZYFFK3TYJQ2">
-    <table>
-      <tr><td><input type="hidden" name="on0" value="Email address">Email address</td></tr>
-      <tr><td><input type="text" name="os0" maxlength="200"></td></tr>
-      <tr><td><input type="hidden" name="on1" value="Phone">Phone</td></tr>
-      <tr><td><input type="text" name="os1" maxlength="200"></td></tr>
-    </table>
-    <input
-      type="image"
-      src=https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif border="0"
-      name="submit"
-      alt="PayPal - The safer, easier way to pay online!">
-    <img alt="" border="0" src=https://www.paypalobjects.com/en_US/i/scr/pixel.gif width="1" height="1">
-    </form>
 
   </div>
 
