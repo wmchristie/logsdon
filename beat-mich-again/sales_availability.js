@@ -14,7 +14,7 @@
 
     table_11: { available: true, },
     table_12: { available: true, },
-    table_13: { available: true, },
+    table_13: { available: false, },
     table_14: { available: true, },
     table_15: { available: true, },
     table_16: { available: true, },
@@ -30,18 +30,18 @@
     table_25: { available: true, },
     table_26: { available: true, },
     table_27: { available: true, },
-    table_28: { available: true, },
+    table_28: { available: false, },
     table_29: { available: true, },
     table_30: { available: true, },
 
-    lane_1: { available: true, },
-    lane_2: { available: true, },
-    lane_3: { available: true, },
-    lane_4: { available: true, },
-    lane_5: { available: true, },
-    lane_6: { available: true, },
-    lane_7: { available: true, },
-    lane_8: { available: true, },
+    lane_31: { available: true, },
+    lane_32: { available: true, },
+    lane_33: { available: true, },
+    lane_34: { available: false, },
+    lane_35: { available: true, },
+    lane_36: { available: true, },
+    lane_37: { available: true, },
+    lane_38: { available: true, },
   };
 
   var app = window.app || (window.app = {});

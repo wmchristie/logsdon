@@ -2,7 +2,7 @@
 
   var app = window.app || (window.app = {});
 
-  app.docReady = function (fn) {
+  function docReady(fn) {
     // see if DOM is already available
     if (document.readyState === "complete" || document.readyState === "interactive") {
       // call on next available tick
@@ -52,8 +52,8 @@
   function writeSold() {
 
     var positions = app.tables.filter(table => {
-      return true;
-      //return !app.tableStatus[table.id].available;
+      console.log('asdfasdf', table.id, app.tableStatus[table.id].available);
+      return !app.tableStatus[table.id].available;
     }).map(table => {
 
       var color = '';
@@ -121,11 +121,7 @@
     layouts: false,
   };
 
-  function populateIfReady() {
-
-    if (!dataStatus.tables || !dataStatus.availability || !dataStatus.layouts) {
-      return;
-    }
+  function populate() {
 
     var container = document.getElementById('purchase_items');
     var markup = app.tables.map(toItemMarkup).join('');
@@ -141,28 +137,61 @@
 
     setOverlaySizes();
 
-    showLayoutGrid('patio_dining_layout');
-    showLayoutGrid('lane_layout');
+    //showLayoutGrid('patio_dining_layout');
+    //showLayoutGrid('lane_layout');
 
     writeSold();
   }
 
-  app.docReady(() => {
+  function getPatioDiningLayoutImage() {
+    return document.querySelector('#patio_dining_layout img');
+  }
+
+  function getLaneLayoutImage() {
+    return document.querySelector('#lane_layout img');
+  }
+
+  function allReady() {
+
+    var img = getPatioDiningLayoutImage();
+
+    if (!img.complete || img.naturalHeight === 0) return false;
+
+    var img = getLaneLayoutImage();
+
+    if (!img.complete || img.naturalHeight === 0) return false;
+
+    return dataStatus.tables && dataStatus.availability && dataStatus.layouts;
+  }
+
+  docReady(() => {
 
     addScript('sales_availability', () => {
       dataStatus.availability = true;
-      populateIfReady();
+      if (allReady()) populate();
     });
 
     addScript('tables', () => {
       dataStatus.tables = true;
-      populateIfReady();
+      if (allReady()) populate();
     });
 
     addScript('layouts', () => {
       dataStatus.layouts = true;
-      populateIfReady();
+      if (allReady()) populate();
     });
+
+    getPatioDiningLayoutImage().addEventListener('load', () => {
+      if (allReady()) populate();
+    });
+
+    getLaneLayoutImage().addEventListener('load', () => {
+      if (allReady()) populate();
+    });
+
+    setTimeout(() => {
+      if (allReady()) populate();
+    }, 0);
 
   });
 
