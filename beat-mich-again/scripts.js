@@ -24,7 +24,7 @@
   }
 
   function setOverlaySizes() {
-    ['patio_layout', 'dining_layout', 'lane_layout' ].forEach(layoutId => {
+    ['patio_dining_layout', 'lane_layout' ].forEach(layoutId => {
       var image = document.querySelector(`#${layoutId} img`);
       var canvas = document.querySelector(`#${layoutId} canvas`);
       canvas.width = image.width;
@@ -76,8 +76,6 @@
     });
 
     positions.forEach(position => {
-
-      console.log(position.mapId);
 
       var canvas = document.getElementById(position.mapId);
 
@@ -143,8 +141,7 @@
 
     setOverlaySizes();
 
-    showLayoutGrid('patio_layout');
-    showLayoutGrid('dining_layout');
+    showLayoutGrid('patio_dining_layout');
     showLayoutGrid('lane_layout');
 
     writeSold();

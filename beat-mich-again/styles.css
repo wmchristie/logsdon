@@ -82,13 +82,11 @@ a {
 
 .seating-charts {
   width: 100%;
-  display: flex;
   flex-wrap: wrap;
 }
 
 .seating-charts .chart {
-  flex: 1 0 40%;
-  margin: 0 0.25rem;
+  width: 100%;
 }
 
 .seating-charts .chart .title {
