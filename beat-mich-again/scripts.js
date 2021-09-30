@@ -52,7 +52,6 @@
   function writeSold() {
 
     var positions = app.tables.filter(table => {
-      console.log('asdfasdf', table.id, app.tableStatus[table.id].available);
       return !app.tableStatus[table.id].available;
     }).map(table => {
 
@@ -128,10 +127,13 @@
     container.innerHTML = markup;
 
     container.addEventListener('click', function (e) {
+
       if (!e.target) return;
       if (e.target.dataset.purpose !== 'purchase') return;
 
       console.log('purchase clicked', e.target.dataset.id);
+      var popup = document.getElementById('order_form');
+      popup.className = `${popup.dataset.baseClass} active`;
 
     });
 

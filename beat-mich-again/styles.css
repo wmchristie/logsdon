@@ -110,8 +110,16 @@ a {
 
 .order-form {
   display: none;
+  background-color: #f0f;
 }
+
 .order-form.active {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .layout-grid {
