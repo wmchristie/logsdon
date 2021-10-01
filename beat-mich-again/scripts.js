@@ -49,13 +49,15 @@
     var soldClass = isSold ? ' sold' : '';
     var disabled = isSold ? ' disabled="disabled"' : '';
     return `
-      <div class="item${soldClass}">
-        <span class="name">${source.name}</span>
-        <span class="price">${source.price}</span>
-        <span class="description">${source.description}</span>
-        <button class="btn-purchase" data-purpose="purchase" data-id="${source.id}"${disabled}>Purchase</button>
-        <div class="sold-overlay">SOLD</div>
-      </div>
+      <a href="#purchase" class="item${soldClass}" data-purpose="purchase" data-id="${source.id}">
+        <span class="btn">Purchase</span>
+        <div class="item-detail">
+          <span class="name">${source.name}</span>
+          <span class="price">${source.price}</span>
+          <span class="description">${source.description}</span>
+          <div class="sold-overlay">SOLD</div>
+        </div>
+      </a>
     `;
   }
 
@@ -169,12 +171,31 @@
 
     container.addEventListener('click', function (e) {
 
-      if (!e.target) return;
-      if (e.target.dataset.purpose !== 'purchase') return;
+      console.log('event', e);
+
+      console.log('target', e.target, e.target.dataset);
+
+      e.preventDefault();
+
+      if (!e.target) return false;
+
+      var element = e.target;
+
+      while (element !== container && element.dataset.purpose !== 'purchase') {
+        console.log(element);
+        element = element.parentElement;
+      }
+
+      if (element === container) {
+        console.log('element is container', element, container);
+        return false;
+      }
+
+      // if (e.target.dataset.purpose !== 'purchase') return false;
 
       var popup = document.getElementById('order_form');
 
-      var tableId = e.target.dataset.id;
+      var tableId = element.dataset.id;
       var item = app.tables.find(i => {
         return i.id === tableId;
       });
@@ -183,6 +204,8 @@
 
       popup.innerHTML = toFormMarkup(item);
       popup.className = `${popup.dataset.baseClass} active`;
+
+      return false;
 
     });
 
