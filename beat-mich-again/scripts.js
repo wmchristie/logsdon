@@ -12,13 +12,49 @@
     }
   };
 
-  function toItemMarkup(source) {
+  function toFormMarkup(item) {
     return `
-      <div class="item">
+    <div class="content">
+      <h2 class="title">Purchase</h2>
+      <div class="product">
+        <h3 class="name">${item.name}</h3>
+        <h3 class="price">${item.price}</h3>
+        <p class="description">${item.description}</p>
+      </div>
+      <hr class="divider" />
+      <form action=https://www.paypal.com/cgi-bin/webscr method="post" target="_top">
+        <input type="hidden" name="cmd" value="_s-xclick">
+        <input type="hidden" name="hosted_button_id" value="${item.paypal_id}">
+        <input type="hidden" name="on0" value="Email address">
+        <label class="form-item lbl">Email address</label>
+        <input class="form-item" type="text" name="os0" maxlength="200">
+        <input type="hidden" name="on1" value="Phone">
+        <label class="form-item lbl">Phone</label>
+        <input class="form-item" type="text" name="os1" maxlength="200">
+        <button type="button" class="form-item btn btn-cancel" data-purpose="cancel">Cancel</button>
+        <input
+          class="form-item btn btn-submit"
+          type="image"
+          src=https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif border="0"
+          name="submit"
+          alt="PayPal - The safer, easier way to pay online!">
+        <img alt="" border="0" src=https://www.paypalobjects.com/en_US/i/scr/pixel.gif width="1" height="1">
+      </form>
+
+    `;
+  }
+
+  function toItemMarkup(source) {
+    var isSold = !app.tableStatus[source.id].available;
+    var soldClass = isSold ? ' sold' : '';
+    var disabled = isSold ? ' disabled="disabled"' : '';
+    return `
+      <div class="item${soldClass}">
         <span class="name">${source.name}</span>
         <span class="price">${source.price}</span>
         <span class="description">${source.description}</span>
-        <button class="btn-purchase" data-purpose="purchase" data-id="${source.id}">Purchase</button>
+        <button class="btn-purchase" data-purpose="purchase" data-id="${source.id}"${disabled}>Purchase</button>
+        <div class="sold-overlay">SOLD</div>
       </div>
     `;
   }
@@ -120,7 +156,12 @@
     layouts: false,
   };
 
+  var populated = false;
+
   function populate() {
+
+    if (populated) return;
+    populated = true;
 
     var container = document.getElementById('purchase_items');
     var markup = app.tables.map(toItemMarkup).join('');
@@ -131,8 +172,16 @@
       if (!e.target) return;
       if (e.target.dataset.purpose !== 'purchase') return;
 
-      console.log('purchase clicked', e.target.dataset.id);
       var popup = document.getElementById('order_form');
+
+      var tableId = e.target.dataset.id;
+      var item = app.tables.find(i => {
+        return i.id === tableId;
+      });
+
+      if (!app.tableStatus[item.id].available) return;
+
+      popup.innerHTML = toFormMarkup(item);
       popup.className = `${popup.dataset.baseClass} active`;
 
     });
@@ -147,7 +196,6 @@
     var orderForm = document.getElementById('order_form');
 
     orderForm.addEventListener('click', (e) => {
-      console.log('clicking');
       if (!e.target) return;
       if (e.target.dataset.purpose !== 'cancel') return;
       orderForm.className = orderForm.dataset.baseClass;

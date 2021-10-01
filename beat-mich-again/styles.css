@@ -63,6 +63,7 @@ a {
 }
 
 .purchase-items .item {
+  position: relative;
   padding: 1rem;
   flex: 1 0 auto;
   text-align: center;
@@ -73,11 +74,37 @@ a {
   font-weight: bold;
 }
 
-.item .price {
-}
-
 .item .description {
   display: block;
+}
+
+.item .btn-purchase {
+  color: #000;
+  background-color: #ff0;
+  border-radius: 10px;
+  padding: 3px 25px;
+  font-weight: bold;
+}
+
+.item .btn-purchase[disabled="disabled"] {
+  color: #ccc;
+}
+
+.item .sold-overlay {
+  display: none;
+}
+
+
+.item.sold .sold-overlay {
+  display: block;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 0;
+  bottom: 0;
+  transform: rotate(330deg);
+  font-size: 48px;
+  color: #ff0;
 }
 
 .seating-charts {

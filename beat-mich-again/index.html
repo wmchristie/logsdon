@@ -18,7 +18,7 @@
   <div class="content">
 
     <div class="header">
-      <img class="banner" src="banner.jpg" />
+      <img class="banner" src="banner.jpg?v=1" />
     </div>
 
     <div class="body">
@@ -31,14 +31,14 @@
 
       <div class="seating-charts">
         <div id="patio_dining_layout" class="chart">
-          <h4 class="title">Patio Layout</h4>
+          <h4 class="title">Patio & Dining Room Reserved Seating</h4>
           <div class="map">
             <img src="patio_dining_layout.jpg" />
             <canvas id="patio_dining_overlay" class="overlay"></canvas>
           </div>
         </div>
         <div id="lane_layout" class="chart">
-          <h4 class="title">Lane Layout</h4>
+          <h4 class="title">Reserve a "Lane for the Game"</h4>
           <div class="map">
             <img src="lane_layout.jpg" />
             <canvas id="lane_overlay" class="overlay"></canvas>
@@ -52,36 +52,7 @@
 
   </div>
 
-  <div id="order_form" class="order-form" data-base-class="order-form">
-    <div class="content">
-      <h2 class="title">Purchase</h2>
-      <div class="product">
-        <h3 class="name">Table 1</h3>
-        <h3 class="price">$180</h3>
-        <p class="description">Low top 6 seats</p>
-      </div>
-      <hr class="divider" />
-      <form action=https://www.paypal.com/cgi-bin/webscr method="post" target="_top">
-        <input type="hidden" name="cmd" value="_s-xclick">
-        <input type="hidden" name="hosted_button_id" value="58ZYFFK3TYJQ2">
-        <input type="hidden" name="on0" value="Email address">
-        <label class="form-item lbl">Email address</label>
-        <input class="form-item" type="text" name="os0" maxlength="200">
-        <input type="hidden" name="on1" value="Phone">
-        <label class="form-item lbl">Phone</label>
-        <input class="form-item" type="text" name="os1" maxlength="200">
-        <button type="button" class="form-item btn btn-cancel" data-purpose="cancel">Cancel</button>
-        <input
-          class="form-item btn btn-submit"
-          type="image"
-          src=https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif border="0"
-          name="submit"
-          alt="PayPal - The safer, easier way to pay online!">
-        <img alt="" border="0" src=https://www.paypalobjects.com/en_US/i/scr/pixel.gif width="1" height="1">
-      </form>
-    </div>
-
-  </div>
+  <div id="order_form" class="order-form" data-base-class="order-form"></div>
 
   <div id="scripts">
     <script src="scripts.js"></script>
