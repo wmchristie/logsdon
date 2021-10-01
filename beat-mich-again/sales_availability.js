@@ -1,7 +1,7 @@
 (function () {
 
   var statuses = {
-    table_1: { available: false, },
+    table_1: { available: true, },
     table_2: { available: true, },
     table_3: { available: true, },
     table_4: { available: true, },
@@ -42,6 +42,9 @@
     lane_36: { available: true, },
     lane_37: { available: true, },
     lane_38: { available: true, },
+
+    donate: { available: true, },
+    sro: { available: true, },
   };
 
   var app = window.app || (window.app = {});
