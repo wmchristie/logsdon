@@ -17,7 +17,7 @@
     var paypalId = '';
 
     var form = `
-      <form action=https://www.paypal.com/cgi-bin/webscr method="post" target="_top">
+      <form class="form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
         <input type="hidden" name="cmd" value="_s-xclick">
         <input type="hidden" name="hosted_button_id" value="${paypalId}">
         <input type="hidden" name="on0" value="Email address">
@@ -58,31 +58,53 @@
   function toSroFormMarkup() {
 
     var form = `
-      <form action=https://www.paypal.com/cgi-bin/webscr method="post" target="_top">
+      <form class="form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+
+        <p class="instructions">We need your email and phone number in order to deliver your ticket.</p>
+
         <input type="hidden" name="cmd" value="_s-xclick">
-        <input type="hidden" name="hosted_button_id" value="${item.paypal_id}">
-        <input type="hidden" name="on0" value="Email address">
-        <label class="form-item lbl">Email address</label>
-        <input class="form-item" type="text" name="os0" maxlength="200">
-        <input type="hidden" name="on1" value="Phone">
-        <label class="form-item lbl">Phone</label>
-        <input class="form-item" type="text" name="os1" maxlength="200">
+        <input type="hidden" name="hosted_button_id" value="TWL3UE9L5N8WL">
+
+        <input type="hidden" name="on0" value="Number of Tickets">
+        <label for="qty_input" class="form-item lbl" data-id="qty_label">Number of Tickets</label>
+        <select id="qty_select" class="form-item select" name="os0">
+          <option value="1 Ticket">1 Ticket $20.00 USD</option>
+          <option value="2 Tickets">2 Tickets $40.00 USD</option>
+          <option value="3 Tickets">3 Tickets $60.00 USD</option>
+          <option value="4 Tickets">4 Tickets $80.00 USD</option>
+        </select>
+
+        <input type="hidden" name="on1" value="Email address">
+        <label for="email_input" class="form-item lbl" data-id="email_label">Email address<sup>*</sup></label>
+        <input id="email_input" class="form-item" type="text" name="os1" maxlength="200">
+
+        <input type="hidden" name="on2" value="Phone">
+        <label for="phone_input" class="form-item lbl" data-id="phone_label">Phone<sup>*</sup> (e.g., 614-123-1234)</label>
+        <input id="phone_input" class="form-item" type="text" name="os2" maxlength="200">
+
+        <input type="hidden" name="currency_code" value="USD">
         <button type="button" class="form-item btn btn-cancel" data-purpose="cancel">Cancel</button>
+
         <input
-          class="form-item btn btn-submit"
+          id="paypal_button"
+          data-purpose="submit"
+          class="form-item btn btn-submit disabled"
           type="image"
-          src=https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif border="0"
+          src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif"
+          border="0"
           name="submit"
           alt="PayPal - The safer, easier way to pay online!">
-        <img alt="" border="0" src=https://www.paypalobjects.com/en_US/i/scr/pixel.gif width="1" height="1">
+
+        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        <div class="requirements"><sup>*</sup> required</div>
       </form>
     `;
 
     return toPopupMarkup({
-      title: 'Donate',
-      name: 'Donate',
-      price: '$$',
-      description: 'Make a donation to the OSUCCC - James Cancer Hospital and Solove Research Institute',
+      title: 'Individual Ticket',
+      name: 'Individual Ticket',
+      price: '$20',
+      description: 'Purchase one or more individual tickets',
       form: form,
     });
   }
@@ -104,9 +126,9 @@
   function toTableFormMarkup(item) {
     var form = `
       <form class="form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-        <p class="instructions">
-          We need your email and phone number in order to deliver your ticket.
-        </p>
+
+        <p class="instructions">We need your email and phone number in order to deliver your ticket.</p>
+
         <input type="hidden" name="cmd" value="_s-xclick">
         <input type="hidden" name="hosted_button_id" value="${item.paypal_id}">
 
@@ -141,7 +163,7 @@
 
   function toItemMarkup(source) {
     return `
-      <a href="#purchase" class="item${source.soldClass}" data-purpose="${source.purpose}" data-id="${source.id}">
+      <a href="#purchase" class="item${source.soldClass}" data-purpose="purchase" data-id="${source.id}">
         <span class="btn">${source.buttonLabel}</span>
         <div class="item-detail">
           <span class="name">${source.name}</span>
@@ -170,7 +192,6 @@
       soldClass: '',
       disabled: '',
       buttonLabel: 'Donate',
-      purpose: 'donate',
     });
   }
 
@@ -182,12 +203,11 @@
     return toItemMarkup({
       id: id,
       name: 'Standing Room Only',
-      price: '$30',
-      description: 'Ticket(s) for entry without a table',
+      price: '$20',
+      description: 'Individual ticket(s)',
       soldClass: soldState.soldClass,
       disabled: soldState.disabled,
       buttonLabel: 'Purchase',
-      purpose: 'sro',
     });
   }
 
@@ -202,7 +222,6 @@
       soldClass: soldState.soldClass,
       disabled: soldState.disabled,
       buttonLabel: 'Purchase',
-      purpose: 'purchase',
     });
   }
 
@@ -364,14 +383,28 @@
 
       var orderForm = getOrderForm();
 
-      var tableId = element.dataset.id;
-      var item = app.tables.find(i => {
-        return i.id === tableId;
-      });
+      var id = element.dataset.id;
 
-      if (!app.tableStatus[item.id].available) return;
+      if (!app.tableStatus[id].available) return;
 
-      orderForm.innerHTML = toTableFormMarkup(item);
+      if (id === 'sro') {
+
+        orderForm.innerHTML = toSroFormMarkup(item);
+
+      } else if (id === 'donate') {
+
+        orderForm.innerHTML = toDonateFormMarkup(item);
+
+      } else {
+
+        var item = app.tables.find(i => {
+          return i.id === id;
+        });
+
+        orderForm.innerHTML = toTableFormMarkup(item);
+
+      }
+
       orderForm.className = `${orderForm.dataset.baseClass} active`;
 
       return false;
