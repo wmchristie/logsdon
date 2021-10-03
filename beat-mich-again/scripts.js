@@ -14,43 +14,52 @@
 
   function toDonateFormMarkup() {
 
-    var paypalId = '';
-
     var form = `
       <form class="form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
         <input type="hidden" name="cmd" value="_s-xclick">
-        <input type="hidden" name="hosted_button_id" value="${paypalId}">
-        <input type="hidden" name="on0" value="Email address">
-        <label class="form-item lbl">Email address</label>
-        <input class="form-item" type="text" name="os0" maxlength="200">
-        <input type="hidden" name="on1" value="Phone">
-        <label class="form-item lbl">Phone</label>
-        <input class="form-item" type="text" name="os1" maxlength="200">
-        <label class="form-item lbl">Amount</label>
-        <select class="form-item">
-          <option value="10">$10</option>
-          <option value="25">$25</option>
-          <option value="50">$50</option>
-          <option value="100">$100</option>
-          <option value="500">$500</option>
+        <input type="hidden" name="hosted_button_id" value="7C8L6N6CYX4X6">
+
+        <input type="hidden" name="on0" value="Donation">
+        <label for="qty_input" class="form-item lbl" data-id="qty_label">Donation</label>
+        <select id="qty_select" class="form-item select" name="os0">
+          <option value="$20 Donation">$20 Donation $20.00 USD</option>
+          <option value="$50 Donation">$50 Donation $50.00 USD</option>
+          <option value="$100 Donation">$100 Donation $100.00 USD</option>
+          <option value="$300 Donation">$300 Donation $300.00 USD</option>
+          <option value="$500 Donation">$500 Donation $500.00 USD</option>
         </select>
+
+        <input type="hidden" name="on1" value="Email address">
+        <label for="email_input" class="form-item lbl" data-id="email_label">Email address<sup>*</sup></label>
+        <input id="email_input" class="form-item" type="text" name="os1" maxlength="200">
+
+        <input type="hidden" name="on2" value="Phone">
+        <label for="phone_input" class="form-item lbl" data-id="phone_label">Phone<sup>*</sup> (e.g., 614-123-1234)</label>
+        <input id="phone_input" class="form-item" type="text" name="os2" maxlength="200">
+
+        <input type="hidden" name="currency_code" value="USD">
         <button type="button" class="form-item btn btn-cancel" data-purpose="cancel">Cancel</button>
+
         <input
-          class="form-item btn btn-submit"
+          id="paypal_button"
+          data-purpose="submit"
+          class="form-item btn btn-submit disabled"
           type="image"
-          src=https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif border="0"
+          src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif"
+          border="0"
           name="submit"
           alt="PayPal - The safer, easier way to pay online!">
-        <img alt="" border="0" src=https://www.paypalobjects.com/en_US/i/scr/pixel.gif width="1" height="1">
+
+        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        <div class="requirements"><sup>*</sup> required</div>
       </form>
     `;
 
-
     return toPopupMarkup({
       title: 'Donate',
-      name: '',
-      price: '',
-      description: '',
+      name: 'Donate',
+      price: 'Amount of your choice',
+      description: 'Make a donation to the cause',
       form: form,
     });
   }
@@ -103,7 +112,7 @@
     return toPopupMarkup({
       title: 'Individual Ticket',
       name: 'Individual Ticket',
-      price: '$20',
+      price: '$20/ticket',
       description: 'Purchase one or more individual tickets',
       form: form,
     });
