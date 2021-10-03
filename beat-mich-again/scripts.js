@@ -103,23 +103,32 @@
 
   function toTableFormMarkup(item) {
     var form = `
-      <form action=https://www.paypal.com/cgi-bin/webscr method="post" target="_top">
+      <form class="form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <p class="instructions">
+          We need your email and phone number in order to deliver your ticket.
+        </p>
         <input type="hidden" name="cmd" value="_s-xclick">
         <input type="hidden" name="hosted_button_id" value="${item.paypal_id}">
+
         <input type="hidden" name="on0" value="Email address">
-        <label class="form-item lbl">Email address</label>
-        <input class="form-item" type="text" name="os0" maxlength="200">
+        <label for="email_input" class="form-item lbl" data-id="email_label">Email address<sup>*</sup></label>
+        <input id="email_input" class="form-item" type="text" name="os0" maxlength="200">
+
         <input type="hidden" name="on1" value="Phone">
-        <label class="form-item lbl">Phone</label>
-        <input class="form-item" type="text" name="os1" maxlength="200">
+        <label for="phone_input" class="form-item lbl" data-id="phone_label">Phone<sup>*</sup> (e.g., 614-123-1234)</label>
+        <input id="phone_input" class="form-item" type="text" name="os1" maxlength="200">
+
         <button type="button" class="form-item btn btn-cancel" data-purpose="cancel">Cancel</button>
         <input
-          class="form-item btn btn-submit"
+          id="paypal_button"
+          data-purpose="submit"
+          class="form-item btn btn-submit disabled"
           type="image"
           src=https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif border="0"
           name="submit"
           alt="PayPal - The safer, easier way to pay online!">
         <img alt="" border="0" src=https://www.paypalobjects.com/en_US/i/scr/pixel.gif width="1" height="1">
+        <div class="requirements"><sup>*</sup> required</div>
       </form>
     `;
 
@@ -287,6 +296,34 @@
     document.getElementById('scripts').append(script);
   }
 
+  function getOrderForm() {
+    return document.getElementById('order_form');
+  }
+
+  function setPaypalButtonState() {
+
+    var paypalButton = document.getElementById('paypal_button');
+    paypalButton.classList.remove('disabled');
+    paypalButton.dataset.state = 'valid';
+
+    var valid = hasValue('email_input') && hasValue('phone_input');
+
+    if (!valid) {
+      paypalButton.classList.add('disabled');
+      paypalButton.dataset.state = 'invalid';
+    }
+
+  }
+
+  function hasValue(id) {
+    var input = document.getElementById(id);
+    if (input.value == null) return false;
+    if (input.value === '') return false;
+    return true;
+  }
+
+
+
   var dataStatus = {
     tables: false,
     availability: false,
@@ -325,7 +362,7 @@
         return false;
       }
 
-      var popup = document.getElementById('order_form');
+      var orderForm = getOrderForm();
 
       var tableId = element.dataset.id;
       var item = app.tables.find(i => {
@@ -334,8 +371,8 @@
 
       if (!app.tableStatus[item.id].available) return;
 
-      popup.innerHTML = toTableFormMarkup(item);
-      popup.className = `${popup.dataset.baseClass} active`;
+      orderForm.innerHTML = toTableFormMarkup(item);
+      orderForm.className = `${orderForm.dataset.baseClass} active`;
 
       return false;
 
@@ -348,14 +385,66 @@
 
     writeSold();
 
-    var orderForm = document.getElementById('order_form');
+    var orderForm = getOrderForm();
+
+
+    orderForm.addEventListener('input', (e) => {
+      handleInputChange(e);
+    });
 
     orderForm.addEventListener('click', (e) => {
+
+
       if (!e.target) return;
-      if (e.target.dataset.purpose !== 'cancel') return;
-      orderForm.className = orderForm.dataset.baseClass;
+
+      if (e.target.dataset.purpose === 'cancel') {
+        cancelOrderForm(orderForm);
+        return false;
+      }
+
+      if (e.target.dataset.purpose === 'submit') {
+        return checkOrderFormValidity(e, e.target);
+      }
+
       return false;
     });
+  }
+
+  function handleInputChange(e) {
+
+    var target = e.target;
+
+    if (!target) return;
+    if (target.tagName !== 'INPUT') return;
+
+    var label = document.querySelector(`[for="${target.id}"]`);
+
+    label.classList.remove('valid');
+    label.classList.remove('warn');
+
+
+    if (target.value === '' || target.value == null) {
+      label.classList.add('warn');
+    }
+    else if (target.value !== '' && target.value != null) {
+      label.classList.add('valid');
+    }
+
+    setPaypalButtonState();
+
+  }
+
+  function cancelOrderForm(orderForm) {
+    orderForm.className = orderForm.dataset.baseClass;
+    orderForm.innerHTML = '';
+  }
+
+  function checkOrderFormValidity(e, button) {
+
+    if (button.dataset.state === 'valid') return true;
+
+    e.preventDefault();
+    return false;
   }
 
   function getPatioDiningLayoutImage() {
