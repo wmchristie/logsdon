@@ -3,8 +3,8 @@
   var statuses = {
     table_1: { available: true, },
     table_2: { available: true, },
-    table_3: { available: true, },
-    table_4: { available: true, },
+    table_3: { available: false, },
+    table_4: { available: false, },
     table_5: { available: true, },
     table_6: { available: true, },
     table_7: { available: true, },

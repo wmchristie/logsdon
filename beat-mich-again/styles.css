@@ -191,20 +191,14 @@ sup {
   flex-wrap: wrap;
 }
 
-.order-form .product .name {
-  margin: 0;
-  flex: 1 0 50%;
-}
-
 .order-form .product .price {
   margin: 0;
-  flex: 1 0 50%;
-  text-align: right;
+  flex: 0 0 100%;
 }
 
-.order-form .product .descripion {
+.order-form .product .description {
   flex: 1 0 100%;
-  margin: 0;
+  margin: 0.5rem 0;
 }
 
 .order-form .title {
@@ -228,13 +222,9 @@ sup {
   position: relative;
 }
 
-.form .instructions {
-  margin-top: 1.1rem;
-}
-
-.order-form .form .requirements {
+.order-form .requirements {
   position: absolute;
-  top: 0.5rem;
+  top: 5rem;
   right: 1rem;
   text-align: right;
   font-size: 1rem;
@@ -339,12 +329,30 @@ sup {
     font-weight: normal;
   }
 
-  .form {
+  .order-form .title {
+    font-size: 1.4rem;
+  }
+
+  .order-form .product {
+    padding-top: 0.5rem;
+  }
+
+  .order-form .product .price {
+    font-size: 1.4rem;
+  }
+
+  .order-form .product .description {
     font-size: 1.1rem;
   }
 
-  .order-form .form .requirements {
-    top: 0.1rem;
+  .order-form .form {
+    font-size: 1.1rem;
+    padding-top: 0;
+  }
+
+  .order-form .requirements {
+    top: 4rem;
+  right: 0.5rem;
   }
 
   .purchase-items .item {

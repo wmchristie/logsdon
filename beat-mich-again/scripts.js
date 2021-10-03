@@ -51,7 +51,6 @@
           alt="PayPal - The safer, easier way to pay online!">
 
         <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-        <div class="requirements"><sup>*</sup> required</div>
       </form>
     `;
 
@@ -69,13 +68,11 @@
     var form = `
       <form class="form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 
-        <p class="instructions">We need your email and phone number in order to deliver your ticket.</p>
-
         <input type="hidden" name="cmd" value="_s-xclick">
         <input type="hidden" name="hosted_button_id" value="TWL3UE9L5N8WL">
 
         <input type="hidden" name="on0" value="Number of Tickets">
-        <label for="qty_input" class="form-item lbl" data-id="qty_label">Number of Tickets</label>
+        <label for="qty_input" class="form-item lbl" data-id="qty_label">Number of tickets</label>
         <select id="qty_select" class="form-item select" name="os0">
           <option value="1 Ticket">1 Ticket $20.00 USD</option>
           <option value="2 Tickets">2 Tickets $40.00 USD</option>
@@ -105,15 +102,14 @@
           alt="PayPal - The safer, easier way to pay online!">
 
         <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-        <div class="requirements"><sup>*</sup> required</div>
       </form>
     `;
 
     return toPopupMarkup({
-      title: 'Individual Ticket',
-      name: 'Individual Ticket',
+      title: 'Individual Ticket(s)',
+      name: 'Individual Ticket(s)',
       price: '$20/ticket',
-      description: 'Purchase one or more individual tickets',
+      description: 'Purchase 1-4 tickets',
       form: form,
     });
   }
@@ -121,22 +117,19 @@
   function toPopupMarkup(item) {
     return `
     <div class="content">
-      <h2 class="title">${item.title}</h2>
+      <h2 class="title">${item.name}</h2>
       <div class="product">
-        <h3 class="name">${item.name}</h3>
         <h3 class="price">${item.price}</h3>
         <p class="description">${item.description}</p>
       </div>
-      <hr class="divider" />
       ${item.form}
+      <div class="requirements"><sup>*</sup> required</div>
     `;
   }
 
   function toTableFormMarkup(item) {
     var form = `
       <form class="form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-
-        <p class="instructions">We need your email and phone number in order to deliver your ticket.</p>
 
         <input type="hidden" name="cmd" value="_s-xclick">
         <input type="hidden" name="hosted_button_id" value="${item.paypal_id}">
@@ -159,7 +152,6 @@
           name="submit"
           alt="PayPal - The safer, easier way to pay online!">
         <img alt="" border="0" src=https://www.paypalobjects.com/en_US/i/scr/pixel.gif width="1" height="1">
-        <div class="requirements"><sup>*</sup> required</div>
       </form>
     `;
 
@@ -211,7 +203,7 @@
 
     return toItemMarkup({
       id: id,
-      name: 'Standing Room Only',
+      name: 'Individual Tickets(s)',
       price: '$20',
       description: 'Individual ticket(s)',
       soldClass: soldState.soldClass,
