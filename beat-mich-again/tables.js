@@ -42,7 +42,7 @@
     { id: 'lane_36', paypal_id: 'TLWJ7R3KPGKTJ', name: 'Lane 36', description: 'Bowling lane, 4-6 seats', type: 'lane', price: '$250', map_id: 'lane_overlay', },
     { id: 'lane_37', paypal_id: '7V68EDS2FBJ7A', name: 'Lane 37', description: 'Bowling lane, 4-6 seats', type: 'lane', price: '$250', map_id: 'lane_overlay', },
     { id: 'lane_38', paypal_id: 'WQP5GV5YRTFG6', name: 'Lane 38', description: 'Bowling lane, 4-6 seats', type: 'lane', price: '$250', map_id: 'lane_overlay', },
-//    { id: 'lane_39', paypal_id: 'UV257WKL6LBXE', name: 'Lane 39', description: 'Bowling lane, 4-6 seats', type: 'lane', price: '$250', map_id: 'lane_overlay', },
+    { id: 'test', paypal_id: 'LXH72XZAGWCAS', name: 'Test Table', description: 'Does this actually work?', type: 'high', price: '$0.25', map_id: 'patio_dining_overlay', },
   ];
 
   (window.app || (window.app = {})).tables = tables;

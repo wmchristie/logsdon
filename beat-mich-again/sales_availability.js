@@ -45,6 +45,8 @@
 
     donate: { available: true, },
     sro: { available: true, },
+
+    test: { available: true, },
   };
 
   var app = window.app || (window.app = {});

@@ -42,6 +42,7 @@
     lane_36: { x: 64, y: 56, vertical: 0, },
     lane_37: { x: 64, y: 64.6, vertical: 0, },
     lane_38: { x: 64, y: 73.6, vertical: 0, },
+    test: { x: 10, y: 10, vertical: 0, },
   };
 
   var app = window.app || (window.app = {});

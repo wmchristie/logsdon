@@ -20,7 +20,7 @@
         <input type="hidden" name="hosted_button_id" value="7C8L6N6CYX4X6">
 
         <input type="hidden" name="on0" value="Donation">
-        <label for="qty_input" class="form-item lbl" data-id="qty_label">Donation</label>
+        <label for="qty_input" class="form-item lbl" data-id="qty_label">Choose amount below</label>
         <select id="qty_select" class="form-item select" name="os0">
           <option value="$20 Donation">$20 Donation $20.00 USD</option>
           <option value="$50 Donation">$50 Donation $50.00 USD</option>
@@ -57,8 +57,8 @@
     return toPopupMarkup({
       title: 'Donate',
       name: 'Donate',
-      price: 'Amount of your choice',
-      description: 'Make a donation to the cause',
+      price: '$$',
+      description: 'Make a donation to the Buckey Cruise for Cancer fundraiser',
       form: form,
     });
   }
