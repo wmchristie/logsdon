@@ -10,6 +10,14 @@ a {
   color: #ff0;
 }
 
+.body .notes {
+  font-size: 1.5rem;
+}
+
+.body .notes .item {
+  margin-bottom: 1rem;
+}
+
 .details-header {
   margin-bottom: 0.25rem;
 }
@@ -17,20 +25,11 @@ a {
 .details-body {
   overflow: hidden;
   font-size: 1.2rem;
-
 }
 
-.details-body.collapsed {
-  max-height: 5rem;
-  -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-
+.details-container .expander {
+  display: none;
 }
-
-.details-body.expanded {
-  max-height: none;
-}
-
 
 .details-body ul {
   list-style: none;
@@ -38,10 +37,14 @@ a {
   padding: 0;
 }
 
+.details-body ul li {
+  margin-left: 1.5rem;
+}
+
 .details-body ul li::before {
   content: '\1f3c8';
   font-size: 0.75rem;
-  margin: 0 1em 0 0;
+  margin: 0 0.75rem 0 -1.5rem;
 }
 
 sup {
@@ -354,6 +357,15 @@ sup {
 
 }
 @media only screen and (max-width: 428px) {
+
+  .body .notes {
+    font-size: 1rem;
+  }
+
+  .body .notes .item {
+    margin-bottom: 0.75rem;
+  }
+
   .content {
     max-width: 428px;
   }
@@ -396,5 +408,47 @@ sup {
   .purchase-items .item {
     flex: 1 1 100%;
   }
+
+  .details-container {
+    position: relative;
+    margin-bottom: 2.5rem;
+  }
+
+  .details-container.collapsed .details-body {
+    max-height: 9rem;
+    -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+
+  }
+
+  .details-container .expander {
+    position: absolute;
+    max-height: none;
+    bottom: -1rem;
+    right: 0;
+  }
+
+  .details-container.expanded {
+    margin-bottom: 3.5rem;
+  }
+
+  .details-container.expanded .expander {
+    bottom: -2rem;
+  }
+
+  .details-container.collapsed .more {
+    display: block;
+  }
+
+  .details-container.expanded .less {
+    display: block;
+  }
+
+
+
+
+
+
+
 
 }

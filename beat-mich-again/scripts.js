@@ -71,9 +71,6 @@
         <input type="hidden" name="cmd" value="_s-xclick">
         <input type="hidden" name="hosted_button_id" value="TWL3UE9L5N8WL">
 
-        function toFormMarkup(item) {
-        }
-
         <input type="hidden" name="on0" value="Number of Tickets">
         <label for="qty_input" class="form-item lbl" data-id="qty_label">Number of tickets</label>
         <select id="qty_select" class="form-item select" name="os0">
@@ -520,6 +517,31 @@
     addScript('layouts', () => {
       dataStatus.layouts = true;
       if (allReady()) populate();
+    });
+
+    var details = document.getElementById('details-container');
+
+    details.addEventListener('click', function(e) {
+
+      var target = e.target;
+
+      if (!target) return;
+      if (target.dataset.purpose !== 'expander') return;
+
+      if (target.dataset.id === 'more_details') {
+
+        e.preventDefault();
+        details.classList.remove('collapsed');
+        details.classList.add('expanded');
+
+      } else if (target.dataset.id === 'less_details') {
+
+        e.preventDefault();
+        details.classList.remove('expanded');
+        details.classList.add('collapsed');
+
+      }
+
     });
 
     getPatioDiningLayoutImage().addEventListener('load', () => {
