@@ -31,6 +31,23 @@ a {
   display: none;
 }
 
+.emphasize {
+  color: #ff0;
+}
+
+.giant {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+
+-webkit-transform:scale(1,1.5); /* Safari and Chrome */
+    -moz-transform:scale(1,1.5); /* Firefox */
+    -ms-transform:scale(1,1.5); /* IE 9 */
+    -o-transform:scale(1,1.5); /* Opera */
+    transform:scale(1,1.5); /* W3C */
+}
+
 .details-body ul {
   list-style: none;
   margin: 0;
@@ -335,6 +352,7 @@ sup {
   margin-top: 2rem;
   border-top: solid 1px #ff0;
   padding: 1rem;
+  font-size: 1.1rem;
 }
 
 .footer .footer-item {
