@@ -58,7 +58,7 @@
       title: 'Donate',
       name: 'Donate',
       price: '$$',
-      description: 'Make a donation to the Buckey Cruise for Cancer fundraiser',
+      description: 'Make a donation to the Buckeye Cruise for Cancer fundraiser',
       form: form,
     });
   }
@@ -107,7 +107,7 @@
 
     return toPopupMarkup({
       title: 'Individual Ticket(s)',
-      name: 'Individual Ticket(s)',
+      name: 'Standing room only',
       price: '$20/ticket',
       description: 'Purchase 1-4 tickets',
       form: form,
@@ -205,7 +205,7 @@
       id: id,
       name: 'Individual Tickets(s)',
       price: '$20',
-      description: 'Individual ticket(s)',
+      description: 'Standing room only',
       soldClass: soldState.soldClass,
       disabled: soldState.disabled,
       buttonLabel: 'Purchase',

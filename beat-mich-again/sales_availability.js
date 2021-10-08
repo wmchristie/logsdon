@@ -1,12 +1,12 @@
 (function () {
 
   var statuses = {
-    table_1: { available: true, },
+    table_1: { available: false, },
     table_2: { available: true, },
     table_3: { available: false, },
     table_4: { available: false, },
     table_5: { available: true, },
-    table_6: { available: true, },
+    table_6: { available: false, },
     table_7: { available: true, },
     table_8: { available: true, },
     table_9: { available: true, },
