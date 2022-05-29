@@ -81,6 +81,19 @@ sup {
   width: 100%;
 }
 
+.ads {
+  margin-top: 1rem;
+  padding-top: 1.5rem;
+  width: 600px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+}
+
+.ads img {
+  position: relative;
+  width: 100%;
+}
+
 .body {
   padding: 0 1rem;
 }
@@ -461,11 +474,8 @@ sup {
     display: block;
   }
 
-
-
-
-
-
-
+  .ads {
+    width: 100%;
+  }
 
 }
