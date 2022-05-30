@@ -12,57 +12,6 @@
     }
   };
 
-  function toDonateFormMarkup() {
-
-    var form = `
-      <form class="form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-        <input type="hidden" name="cmd" value="_s-xclick">
-        <input type="hidden" name="hosted_button_id" value="7C8L6N6CYX4X6">
-
-        <input type="hidden" name="on0" value="Donation">
-        <label for="qty_input" class="form-item lbl" data-id="qty_label">Choose amount below</label>
-        <select id="qty_select" class="form-item select" name="os0">
-          <option value="$20 Donation">$20 Donation $20.00 USD</option>
-          <option value="$50 Donation">$50 Donation $50.00 USD</option>
-          <option value="$100 Donation">$100 Donation $100.00 USD</option>
-          <option value="$300 Donation">$300 Donation $300.00 USD</option>
-          <option value="$500 Donation">$500 Donation $500.00 USD</option>
-        </select>
-
-        <input type="hidden" name="on1" value="Email address">
-        <label for="email_input" class="form-item lbl" data-id="email_label">Email address<sup>*</sup></label>
-        <input id="email_input" class="form-item" type="text" name="os1" maxlength="200">
-
-        <input type="hidden" name="on2" value="Phone">
-        <label for="phone_input" class="form-item lbl" data-id="phone_label">Phone<sup>*</sup> (e.g., 614-123-1234)</label>
-        <input id="phone_input" class="form-item" type="text" name="os2" maxlength="200">
-
-        <input type="hidden" name="currency_code" value="USD">
-        <button type="button" class="form-item btn btn-cancel" data-purpose="cancel">Cancel</button>
-
-        <input
-          id="paypal_button"
-          data-purpose="submit"
-          class="form-item btn btn-submit disabled"
-          type="image"
-          src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif"
-          border="0"
-          name="submit"
-          alt="PayPal - The safer, easier way to pay online!">
-
-        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-      </form>
-    `;
-
-    return toPopupMarkup({
-      title: 'Donate',
-      name: 'Donate',
-      price: '$$',
-      description: 'Make a donation to the Buckeye Cruise for Cancer fundraiser',
-      form: form,
-    });
-  }
-
   function toSroFormMarkup() {
 
     var form = `
@@ -184,18 +133,6 @@
     };
   }
 
-  function toDonateMarkup() {
-    return toItemMarkup({
-      id: 'donate',
-      name: 'Donate',
-      price: '$$',
-      description: 'Make a donation',
-      soldClass: '',
-      disabled: '',
-      buttonLabel: 'Donate',
-    });
-  }
-
   function toSroMarkup() {
 
     var id = 'sro';
@@ -227,10 +164,10 @@
   }
 
   function setOverlaySizes() {
-    ['patio_dining_layout', 'lane_layout' ].forEach(layoutId => {
+    ['patio_dining_layout' ].forEach(layoutId => {
       var image = document.querySelector(`#${layoutId} img`);
       var canvas = document.querySelector(`#${layoutId} canvas`);
-      canvas.width = image.width;
+      canvas.width = image.width * 0.4;
       canvas.height = image.height;
     });
   }
@@ -258,16 +195,11 @@
       return !app.tableStatus[table.id].available;
     }).map(table => {
 
-      var color = '';
-      if (table.type === 'low') {
-        color = '#ff0';
-      } else {
-        color = '#000';
-      }
-
+      var color = '#000';
       var position = app.layouts[table.id];
 
       return {
+        id: table.id,
         x: position.x,
         y: position.y,
         vertical: position.vertical,
@@ -277,9 +209,18 @@
 
     });
 
-    positions.forEach(position => {
+    var canvas = document.getElementById(positions[0].mapId);
 
-      var canvas = document.getElementById(position.mapId);
+    var fontSize = canvas.height / 40;
+
+    var ctx = canvas.getContext('2d');
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.textBaseline = 'middle';
+    ctx.rotate(-Math.PI/2);
+
+
+    positions.forEach(position => {
 
       var x = 0;
       var y = 0;
@@ -292,16 +233,10 @@
         y = (position.y / 100) * canvas.height;
       }
 
-      var fontSize = canvas.height / 33;
-
-      var ctx = canvas.getContext('2d');
-      ctx.textBaseline = 'middle';
-
       ctx.save();
       ctx.font = `bold ${fontSize}px arial`;
-      ctx.rotate(position.vertical * (-Math.PI/2));
       ctx.fillStyle = position.color;
-      ctx.fillText('SOLD', x, y);
+      ctx.fillText(`SOLD`, x, y);
       ctx.restore();
 
     });
@@ -360,11 +295,10 @@
     var container = document.getElementById('purchase_items');
 
     var sro = toSroMarkup();
-    var donate = toDonateMarkup();
 
     var tables = app.tables.map(toTableMarkup).join('');
 
-    container.innerHTML = `${donate}${sro}${tables}`;
+    container.innerHTML = `${sro}${tables}`;
 
     container.addEventListener('click', function (e) {
 
@@ -391,10 +325,6 @@
       if (id === 'sro') {
 
         orderForm.innerHTML = toSroFormMarkup(item);
-
-      } else if (id === 'donate') {
-
-        orderForm.innerHTML = toDonateFormMarkup(item);
 
       } else {
 
@@ -485,17 +415,9 @@
     return document.querySelector('#patio_dining_layout img');
   }
 
-  function getLaneLayoutImage() {
-    return document.querySelector('#lane_layout img');
-  }
-
   function allReady() {
 
     var img = getPatioDiningLayoutImage();
-
-    if (!img.complete || img.naturalHeight === 0) return false;
-
-    var img = getLaneLayoutImage();
 
     if (!img.complete || img.naturalHeight === 0) return false;
 
@@ -548,13 +470,13 @@
       if (allReady()) populate();
     });
 
-    getLaneLayoutImage().addEventListener('load', () => {
-      if (allReady()) populate();
-    });
-
     setTimeout(() => {
       if (allReady()) populate();
     }, 0);
+
+    window.addEventListener('resize', function(e) {
+      writeSold();
+    });
 
   });
 

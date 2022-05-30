@@ -129,12 +129,6 @@ sup {
   border-radius: 0.5rem 0 0 0.5rem;
 }
 
-.purchase-items .item[data-purpose="donate"] .btn {
-  background-color: #f00;
-  color: #fff;
-  font-size: 1.2rem;
-}
-
 .purchase-items .item .item-detail {
   position: relative;
   display: flex;
@@ -145,9 +139,6 @@ sup {
   border-right: solid 1px #ff0;
   border-top: solid 1px #ff0;
   border-radius: 0 0.5rem 0.5rem 0;
-}
-
-.purchase-items .item[data-purpose="donate"] .item-detail {
   border-color: #f00;
 }
 
