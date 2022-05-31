@@ -23,10 +23,10 @@
         <input type="hidden" name="on0" value="Number of Tickets">
         <label for="qty_input" class="form-item lbl" data-id="qty_label">Number of tickets</label>
         <select id="qty_select" class="form-item select" name="os0">
-          <option value="1 Ticket">1 Ticket $20.00 USD</option>
-          <option value="2 Tickets">2 Tickets $40.00 USD</option>
-          <option value="3 Tickets">3 Tickets $60.00 USD</option>
-          <option value="4 Tickets">4 Tickets $80.00 USD</option>
+          <option value="1 Ticket">1 Ticket $10.00 USD</option>
+          <option value="2 Tickets">2 Tickets $20.00 USD</option>
+          <option value="3 Tickets">3 Tickets $30.00 USD</option>
+          <option value="4 Tickets">4 Tickets $40.00 USD</option>
         </select>
 
         <input type="hidden" name="on1" value="Email address">
@@ -57,7 +57,7 @@
     return toPopupMarkup({
       title: 'Individual Ticket(s)',
       name: 'Standing room only',
-      price: '$20/ticket',
+      price: '$10/ticket',
       description: 'Purchase 1-4 tickets',
       form: form,
     });
@@ -141,7 +141,7 @@
     return toItemMarkup({
       id: id,
       name: 'Individual Tickets(s)',
-      price: '$20',
+      price: '$10',
       description: 'Standing room only',
       soldClass: soldState.soldClass,
       disabled: soldState.disabled,
