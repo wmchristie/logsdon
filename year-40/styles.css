@@ -48,8 +48,8 @@ a {
     transform:scale(1,1.5); /* W3C */
 }
 
+/*
 .details-body ul {
-  list-style: none;
   margin: 0;
   padding: 0;
 }
@@ -57,13 +57,7 @@ a {
 .details-body ul li {
   margin-left: 1.5rem;
 }
-
-.details-body ul li::before {
-  content: '\1f3c8';
-  font-size: 0.75rem;
-  margin: 0 0.75rem 0 -1.5rem;
-}
-
+*/
 sup {
   top: -0.25rem;
   left: 0.25rem;
