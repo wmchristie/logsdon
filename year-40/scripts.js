@@ -140,9 +140,9 @@
 
     return toItemMarkup({
       id: id,
-      name: 'Individual Tickets(s)',
+      name: 'Individual Ticket(s)',
       price: '$10',
-      description: 'Standing room only',
+      description: 'Standing-room-only',
       soldClass: soldState.soldClass,
       disabled: soldState.disabled,
       buttonLabel: 'Purchase',
