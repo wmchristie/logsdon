@@ -19,7 +19,7 @@
 
     { id: 'table_13', paypal_id: 'LHKM5ZKBWVQNY', name: 'Table 13', description: 'Low top table, 4 seats', type: 'low', price: '$80', map_id: 'patio_dining_overlay', },
     { id: 'table_14', paypal_id: 'WMM4N35LG6T3A', name: 'Table 14', description: 'Low top table, 4 seats', type: 'low', price: '$80', map_id: 'patio_dining_overlay', },
-    { id: 'table_15', paypal_id: '2W8P9V433D79U', name: 'Table 15', description: 'High top table, 4 seats', type: 'high', price: '$80', map_id: 'patio_dining_overlay', },
+    { id: 'table_15', paypal_id: '2W8P9V433D79U', name: 'Table 15', description: 'High top table, 6 seats', type: 'high', price: '$120', map_id: 'patio_dining_overlay', },
 
     { id: 'table_16', paypal_id: 'HE4VYMX3LR5AJ', name: 'Table 16', description: 'High top table, 6 seats', type: 'high', price: '$120', map_id: 'patio_dining_overlay', },
     { id: 'table_17', paypal_id: 'Y757VC5ZCTC6Q', name: 'Table 17', description: 'Low top table, 6 seats', type: 'low', price: '$120', map_id: 'patio_dining_overlay', },
