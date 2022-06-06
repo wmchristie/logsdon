@@ -12,4 +12,5 @@ http.createServer(function (req, res) {
     res.writeHead(200);
     res.end(data);
   });
+  console.log('serving at :8080');
 }).listen(8080);

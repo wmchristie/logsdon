@@ -1,6 +1,7 @@
 (function () {
 
   var layouts = {
+    table_test: { x: -1000, y: -1000, vertical: 1, },
     table_1: { x: 72, y: 85.5, vertical: 1, },
     table_2: { x: 46, y: 85.5, vertical: 1, },
     table_3: { x: 20, y: 85.5, vertical: 1, },
@@ -36,7 +37,6 @@
     table_25: { x: 75, y: 7.5, vertical: 1, },
     table_26: { x: 47, y: 7.5, vertical: 1, },
     table_27: { x: 18, y: 7.5, vertical: 1, },
-    test: { x: 100, y: 10, vertical: 1, },
   };
 
   var app = window.app || (window.app = {});

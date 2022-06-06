@@ -1,6 +1,7 @@
 (function () {
 
   var statuses = {
+    table_test: { available: true, },
     table_1: { available: false, },
     table_2: { available: true, },
     table_3: { available: true, },

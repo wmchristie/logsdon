@@ -1,6 +1,7 @@
 (function () {
 
   var tables = [
+    { id: 'table_test', paypal_id: '', name: 'Test Purchase Button', description: 'Testing, Testing, Testing', type: 'low', price: '$0.01', map_id: 'patio_dining_overlay', },
     { id: 'table_1', paypal_id: '58ZYFFK3TYJQ2', name: 'Table 1', description: 'Low top table, 10 seats', type: 'low', price: '$300', map_id: 'patio_dining_overlay', },
     { id: 'table_2', paypal_id: 'W4X9LEK3MRWGE', name: 'Table 2', description: 'Low top table, 10 seats', type: 'low', price: '$300', map_id: 'patio_dining_overlay', },
     { id: 'table_3', paypal_id: '3UR6PHXVB8NQU', name: 'Table 3', description: 'Low top table, 10 seats', type: 'low', price: '$300', map_id: 'patio_dining_overlay', },
